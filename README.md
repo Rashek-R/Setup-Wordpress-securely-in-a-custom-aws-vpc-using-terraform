@@ -7,7 +7,7 @@ Database servers are the most important servers in any small or big company beca
 
 
 
-##Provider
+## Provider
 * A provider is a plugin that lets Terraform manage an external API
 
 ```
