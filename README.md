@@ -3,11 +3,11 @@
 
 Database servers are the most important servers in any small or big company because it contains all the data sets that can be of any user or employee of that company. Therefore, the best practices of server security are focused on protecting digital assets from cybercriminals. This approach is necessary because numerous hackers exploit existing vulnerabilities for financial gain. Here we set up a custom-made secure setup for installing WordPress and protecting our server.
 
-=========================================================================================================================================
+--------------------------------------------------------------------------------------------------------------------
 
 
 
-# #*Provider*
+##Provider
 * A provider is a plugin that lets Terraform manage an external API
 
 ```
@@ -18,8 +18,9 @@ provider "aws" {
   secret_key = "Your_secrey_key"
 }
 ```
+---------------------------------------------------------------------------------------------------------------------
+##Data Resource
 
-# #*Data Resource*
 * Data Resource - allow you to write configuration that is flexible and easier to re-use - Data sources allow Terraform to use the information defined outside of Terraform
 
 ```
@@ -32,8 +33,10 @@ data "aws_availability_zones" "available" {
   state = "available"
 }
 ```
+---------------------------------------------------------------------------------------------------------------------
 * ***Variable Creation*** - allows you to write a configuration that is flexible and easier to re-use
-# #*Variable*
+
+##Variable
 
 ```
 variable "project_name" {
@@ -92,8 +95,9 @@ variable "enable_natgw" {
   default = true #or false
 }
 ```
+---------------------------------------------------------------------------------------------------------------
 * ***Output Creation***  - Terraform output values let you export structured data about your resources
-# #*Output*
+##Output
 
 ```
 output "frontend_public_ip" {
@@ -126,7 +130,7 @@ output "aws_security_group_frontend" {
 
 }
 
-################
+============================================
 
 output "bastion_public_ip" {
   value = aws_instance.bastion.public_ip
@@ -152,7 +156,7 @@ output "aws_security_group_bastion" {
 
 }
 
-####################
+==================================================
 
 
 output "backend_private_ip" {
@@ -174,7 +178,7 @@ output "aws_security_group_backend" {
 
 }
 
-########################################
+====================================================
 
 
 #cidrsubnet output
@@ -219,7 +223,7 @@ output "main_cidr_block_subnet6" {
 }
 
 
-########################################
+==================================================
 
 #Route53 public hosted zone
 
@@ -235,7 +239,7 @@ output "details_of_availability_zone" {
 }
 ```
 
-# #*Wordpress userdata*
+##Wordpress userdata
 
 ```
 #!/bin/bash
@@ -263,8 +267,8 @@ sed -i "s/localhost/backend.learndevops.local/" /var/www/html/wp-config.php
 
 rm -rf wordpress
 ```
-
-# #*Mysql userdata*
+----------------------------------------------------------------------------------------------
+##Mysql userdata
 
 ```
 #!/bin/bash
@@ -282,8 +286,8 @@ mysql -u root -e "grant all privileges on blogdb.* to wpuser@'%';"
 
 mysql -u root -e "flush privileges;"
 ```
-
-# #*Main*
+-----------------------------------------------------------------------------------------------------
+##Main
 
 ```
 #vpc creation
