@@ -25,7 +25,7 @@ provider "aws" {
 
 ```
 data "aws_route53_zone" "selected" {
-  name         = "learndevops.website"
+  name         = "silverproducts.online"
   private_zone = false
 }
 
@@ -34,7 +34,7 @@ data "aws_availability_zones" "available" {
 }
 ```
 ---------------------------------------------------------------------------------------------------------------------
-* ***Variable Creation*** - allows you to write a configuration that is flexible and easier to re-use
+### Variable Creation- allows you to write a configuration that is flexible and easier to re-use
 
 ## Variable
 
@@ -87,7 +87,7 @@ variable "region" {
 variable "private_zone_name" {
 
   type    = string
-  default = "learndevops.local"
+  default = "silverproducts.local"
 }
 
 variable "enable_natgw" {
@@ -96,7 +96,7 @@ variable "enable_natgw" {
 }
 ```
 ---------------------------------------------------------------------------------------------------------------
-* ***Output Creation***  - Terraform output values let you export structured data about your resources
+### Output Creation - Terraform output values let you export structured data about your resources
 ## Output
 
 ```
@@ -263,7 +263,7 @@ sed -i "s/username_here/wpuser/" /var/www/html/wp-config.php
 
 sed -i "s/password_here/wpuser1234/" /var/www/html/wp-config.php
 
-sed -i "s/localhost/backend.learndevops.local/" /var/www/html/wp-config.php
+sed -i "s/localhost/backend.silverproducts.local/" /var/www/html/wp-config.php
 
 rm -rf wordpress
 ```
